@@ -43,7 +43,15 @@ function initServer() {
   var options = {
     dataAdapter: new DataAdapter(env.current.api),
     errorHandler: mw.errorHandler(),
-    appData: env.current.rendrApp
+    appData: env.current.rendrApp,
+    paths: {
+      routes :
+        [rendr.entryPath + '/server/app/routes',
+        rendr.entryPath + '/app/routes'],
+        //rendr.entryPath + '/server/app/routes',
+      controllerDirs :
+        [rendr.entryPath + '/server/app/controllers',
+        rendr.entryPath + '/app/controllers']
   };
   server = rendr.createServer(app, options);
 }
