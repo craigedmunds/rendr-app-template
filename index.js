@@ -52,6 +52,7 @@ function initServer() {
       controllerDirs :
         [rendr.entryPath + '/server/app/controllers',
         rendr.entryPath + '/app/controllers']
+    }
   };
   server = rendr.createServer(app, options);
 }
