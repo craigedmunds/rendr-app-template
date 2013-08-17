@@ -10,7 +10,6 @@ var rootConfig = readSecrets();
 // console.log("rootConfig : " + util.inspect(rootConfig));
 
 var passport = require('passport')
-  , user = require('./user')
   , config = rootConfig.passport
   , successRedirect = config.successRedirect
   , failureRedirect = config.failureRedirect
