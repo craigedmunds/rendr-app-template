@@ -5,8 +5,9 @@ module.exports = {
     name: 'Test Service'
   , keyField: 'id'
   , parseProfile: function (profile) {
-      geddy.log.debug('Test Service parseProfile : ' + util.inspect(profile));
       var userData = {
+        //TODO : Implement an API to retrieve personal info
+        // in API app
         givenName: "Craig Edmunds"
       };
       return userData;

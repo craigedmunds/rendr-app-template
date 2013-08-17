@@ -5,3 +5,4 @@ app/templates/compiledTemplates.js
 public/styles.css
 .DS_Store
 npm-debug.log
+.env

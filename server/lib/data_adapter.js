@@ -3,6 +3,7 @@ var utils = require('rendr/server/utils'),
     url = require('url'),
     request = require('request'),
     debug = require('debug')('app:DataAdapter'),
+    passport = require('passport'),
     inspect = require('util').inspect;
 
 module.exports = DataAdapter;
@@ -26,15 +27,22 @@ DataAdapter.prototype.request = function(req, api, options, callback) {
     options = {};
   }
 
+  var doOauth = false;
+
+  //TODO : Tidy this up to look into passport._strategy("testservice");
+  //TODO : Check for authentication credentials in session
+  // Currently expects the name of the api in backbone and the strategy in passport to be the same
+  if (api.api == "testservice") {
+    doOauth = true;
+  }
+
   options = _.clone(options);
   _.defaults(options, {
     convertErrorCode: true,
     allow4xx: false
   });
 
-  api = this.apiDefaults(api);
-  start = new Date().getTime();
-  request(api, function(err, response, body) {
+  var cb = function(err, response, body) {
     if (err) return callback(err);
     end = new Date().getTime();
 
@@ -52,7 +60,22 @@ DataAdapter.prototype.request = function(req, api, options, callback) {
       }
     }
     callback(err, response, body);
-  });
+  };
+
+  api = this.apiDefaults(api);
+  start = new Date().getTime();
+
+  if (doOauth) {
+    //TODO : Use dynamic service name
+    var testServiceStrategy = passport._strategy("testservice");
+
+    //TODO : figure out how to bypass the custom strategy and go straight to the oauth class
+    testServiceStrategy.passThrough(api.url, req.session.authData.token, req.session.authData.tokenSecret, cb);
+
+  }
+  else {
+    request(api, cb);
+  }
 };
 
 DataAdapter.prototype.apiDefaults = function(api) {

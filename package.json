@@ -18,7 +18,18 @@
     "request": "~2.16",
     "rendr-handlebars": "0.0.5",
     "rendr": "git://github.com/craigedmunds/rendr#149165f9ab4f7f17a96eb251fde0c0089a0b4e3b",
-    "debug": "*"
+    "debug": "*",
+    "util": "*",
+    "utile": "~0.2.0",
+    "passport": "*",
+    "passport-oauth": "*",
+    "bcrypt": "0.7.x",
+    "pkginfo": "*",
+    "ejs": "~0.8.4",
+    "dotenv": "0.0.2",
+    "backbone": "~1.0.0",
+    "connect-redis": "~1.4.5",
+    "redis": "~0.8.4"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

@@ -18,6 +18,10 @@ exports.config = {
     'travis-ci': {
       host: 'api.travis-ci.org',
       protocol: 'https'
+    },
+    'testservice': {
+      host: 'shrouded-coast-2114.herokuapp.com',
+      protocol: 'http'
     }
   },
 

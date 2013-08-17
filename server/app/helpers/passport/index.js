@@ -10,7 +10,7 @@ exports.requireAuth = function () {
   if (!(this.session.get('userId') ||
       this.name == 'Main' ||
       this.name == 'Auth')) {
-    this.redirect('/login');
+    this.redirect('/auth/testservice');
   }
 };
 
@@ -21,6 +21,3 @@ exports.cryptPass = function (cleartextPass) {
 
   return bcrypt.hashSync(cleartextPass, 10);
 };
-
-
-

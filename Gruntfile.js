@@ -107,7 +107,7 @@ module.exports = function(grunt) {
   grunt.registerTask('runNode', function () {
     grunt.util.spawn({
       cmd: 'node',
-      args: ['./node_modules/nodemon/nodemon.js', '--debug', 'index.js'],
+      args: ['./node_modules/nodemon/nodemon.js', '--debug=5859', 'index.js'],
       opts: {
         stdio: 'inherit'
       }
